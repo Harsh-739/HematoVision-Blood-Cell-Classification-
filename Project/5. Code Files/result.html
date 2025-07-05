@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <style>
+        /* 🔴 Background video styling */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -2;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .result-container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+             width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+
+        img {
+            max-width: 300px;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 300px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔴 Background video -->
+    <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static', filename='rbc.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- 🔴 Optional overlay for visibility -->
+    <div id="overlay"></div>
+
+    <div class="result-container">
+        <div class="back-link">Prediction Result</div>
+        <h2>Predicted Class: {{ class_label }}</h2>
+        <img src="data:image/png;base64,{{ img_data }}" alt="Predicted Image">
+        <br>
+        <a class="back-link" href="/">Go Back</a>
+    </div>
+</body>
+</html>
