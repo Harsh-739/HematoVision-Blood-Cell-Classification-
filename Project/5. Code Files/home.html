@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HematoVision</title>
+    <style>
+        /* Background video styling */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -2;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            width: 600px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .header {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+            font-size: 24px;
+        }
+
+        .section-title {
+            color: #e74c3c;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px 0 20px 0;
+        }
+
+        input[type="file"] {
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔴 Fullscreen Background Video -->
+    <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static', filename='rbc.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Optional overlay to enhance readability -->
+    <div id="overlay"></div>
+
+    <div class="container">
+        <div class="header">Welcome to HematoVision</div>
+
+        <div class="section-title">Upload Blood Cell Image</div>
+        <p>
+            Blood cells are vital components of our body, playing essential roles in immunity,
+            oxygen transport, and clotting. Understanding different types of blood cells is crucial
+            for diagnosing various medical conditions.
+        </p>
+
+        <div class="section-title">Predict Blood Cell Type</div>
+        <p>Upload an image of a blood cell to determine its type using our state-of-the-art classification model.</p>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required><br>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
