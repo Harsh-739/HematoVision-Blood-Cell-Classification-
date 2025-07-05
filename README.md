@@ -1,1 +1,2 @@
 # HematoVision-Blood-Cell-Classification-
+HematoVision is a deep learning project that uses transfer learning to classify blood cells from microscopic images into four categories: eosinophils, lymphocytes, monocytes, and neutrophils. Built on a dataset of 12,000 labeled images and powered by pre-trained CNN architectures (e.g., MobileNetV2), the model achieves high accuracy while remaining efficient and scalable. This tool is designed to assist pathologists and healthcare professionals in automating and enhancing blood cell analysis.
